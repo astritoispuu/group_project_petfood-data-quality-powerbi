@@ -1,0 +1,264 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "22edfc95a345f37e8fcf",
+  "position": {
+    "x": 37,
+    "y": 220,
+    "z": 2000,
+    "height": 486,
+    "width": 510,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_nutrients"
+                    }
+                  },
+                  "Property": "nutrient_name"
+                }
+              },
+              "queryRef": "dim_nutrients.nutrient_name",
+              "nativeQueryRef": "Nutrient Name",
+              "active": true,
+              "displayName": "Nutrient Name"
+            }
+          ]
+        },
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_products"
+                    }
+                  },
+                  "Property": "product_name_en"
+                }
+              },
+              "queryRef": "dim_products.product_name_en",
+              "nativeQueryRef": "Product name EN",
+              "active": true,
+              "displayName": "Product name EN"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_products"
+                    }
+                  },
+                  "Property": "product_id"
+                }
+              },
+              "queryRef": "dim_products.product_id",
+              "nativeQueryRef": "Product ID",
+              "active": false,
+              "displayName": "Product ID"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_product_nutrients"
+                    }
+                  },
+                  "Property": "Toitaine_sisaldus_mg_kg"
+                }
+              },
+              "queryRef": "fact_product_nutrients.Toitaine_sisaldus_mg_kg",
+              "nativeQueryRef": "Toitaine sisaldus mg/kg",
+              "displayName": "Toitaine sisaldus mg/kg"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_products"
+                  }
+                },
+                "Property": "product_name_en"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "dim_products.product_name_en"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_products"
+                    }
+                  },
+                  "Property": "product_name_en"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "dim_products.product_id"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "326D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "dim_products.product_name_en"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {}
+        }
+      ],
+      "rowTotal": [
+        {
+          "properties": {
+            "applyToHeaders": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTotals": [
+        {
+          "properties": {
+            "rowSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "columnSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ad8eb8bf95298ffbe95b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_nutrients"
+              }
+            },
+            "Property": "nutrient_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "180dbc68ce7fd9e166fb",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_products"
+              }
+            },
+            "Property": "product_name_en"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "99c3ba3fc74770d871b2",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_products"
+              }
+            },
+            "Property": "product_id"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ca4de0e10f5c9de71d14",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fact_product_nutrients"
+              }
+            },
+            "Property": "Toitaine_sisaldus_mg_kg"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

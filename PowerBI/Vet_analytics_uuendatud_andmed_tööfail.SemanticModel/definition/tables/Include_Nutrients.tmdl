@@ -1,0 +1,78 @@
+table Include_Nutrients
+	lineageTag: 5f3c8770-8516-44b8-9496-d8861c5031ae
+
+	measure Toote_Noutud_Toitaine_Filter =
+			
+			VAR ValitudToitained =
+			    VALUES ( 'Include_Nutrients'[Nutrient] )
+			
+			VAR FilterOn =
+			    ISFILTERED ( 'Include_Nutrients'[Nutrient] )
+			
+			VAR TooteIDd =
+			    VALUES ( 'dim_products'[product_id] )
+			
+			VAR LeitudToitained =
+			    DISTINCT (
+			        SELECTCOLUMNS (
+			            FILTER (
+			                ALL ( 'fact_product_nutrients' ),
+			                // Kontrollime parajasti vaadeldavat toodet.
+			                'fact_product_nutrients'[product_id] IN TooteIDd
+			
+			                    // Võrdleme toitainenime valitud nimetustega.
+			                    && RELATED ( 'dim_nutrients'[nutrient_name] )
+			                        IN ValitudToitained
+			
+			                    // Puuduv või nullväärtus ei täida nõuet.
+			                    && NOT ISBLANK (
+			                        'fact_product_nutrients'[value_mg_kg]
+			                    )
+			                    && 'fact_product_nutrients'[value_mg_kg] > 0
+			            ),
+			            "Toitaine", RELATED ( 'dim_nutrients'[nutrient_name] )
+			        )
+			    )
+			
+			RETURN
+			    IF (
+			        NOT FilterOn,
+			        1,
+			        // Kõik valitud toitained peavad tingimuse täitma.
+			        IF (
+			            COUNTROWS ( LeitudToitained )
+			                = COUNTROWS ( ValitudToitained ),
+			            1,
+			            0
+			        )
+			    )
+		formatString: 0
+		lineageTag: 1b7eb15d-ee71-4ce6-b3bc-cc43ce8cf64c
+
+	column Nutrient
+		lineageTag: 24a455eb-c3fc-453b-ad33-97e1343f928b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Nutrient]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Include_Nutrients = calculated
+		mode: import
+		source =
+				
+				FILTER (
+				    // Kopeerime toitainete nimekirja eraldi valiku jaoks.
+				    DISTINCT (
+				        SELECTCOLUMNS (
+				            'dim_nutrients',
+				            "Nutrient", 'dim_nutrients'[nutrient_name]
+				        )
+				    ),
+				    // Jätame tühjad nimetused välja.
+				    NOT ISBLANK ( [Nutrient] )
+				        && [Nutrient] <> ""
+				)
+
+	annotation PBI_Id = 2c2d20f838e1484884153d978e089d8f
+

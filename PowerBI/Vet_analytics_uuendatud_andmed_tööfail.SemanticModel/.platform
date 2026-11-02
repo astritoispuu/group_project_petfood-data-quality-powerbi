@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Vet_analytics_uuendatud_andmed_tööfail"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f2d6185b-886c-413e-b8d7-5c1138be14ea"
+  }
+}

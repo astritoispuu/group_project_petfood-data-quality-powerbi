@@ -1,0 +1,57 @@
+table Filter_Ingredients
+	lineageTag: e821e271-b3c7-43f1-897d-fb5dfbc1cb57
+
+	measure Toote_Koostisosa_Filter =
+			
+			VAR ValitudKoostisosad =
+			    VALUES ( 'Filter_Ingredients'[Ingredient] )
+			
+			VAR FilterOn =
+			    ISFILTERED ( 'Filter_Ingredients'[Ingredient] )
+			
+			VAR TooteIDd =
+			    VALUES ( dim_products[product_id] )
+			
+			VAR Hits =
+			    COUNTROWS (
+			        FILTER (
+			            ALL ( fact_ingredients ),
+			            fact_ingredients[product_id] IN TooteIDd
+			                && fact_ingredients[ingredient] IN ValitudKoostisosad
+			        )
+			    )
+			
+			RETURN
+			    IF (
+			        NOT FilterOn,
+			        1,
+			        IF ( COALESCE ( Hits, 0 ) > 0, 0, 1 )
+			    )
+		formatString: 0
+		lineageTag: 77f7b151-9410-46a1-9c97-0053d8685406
+
+	column Ingredient
+		lineageTag: b1a18736-c867-4e16-83f9-a9ef0af5e06c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Ingredient]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Filter_Ingredients = calculated
+		mode: import
+		source = ```
+				
+				    DISTINCT (
+				        SELECTCOLUMNS (
+				            FILTER (
+				                fact_ingredients,
+				                NOT ISBLANK ( fact_ingredients[ingredient] )
+				            ),
+				            "Ingredient", fact_ingredients[ingredient]
+				        )
+				    )
+				```
+
+	annotation PBI_Id = 2db8159283a941fbb17d9e34af8ef807
+

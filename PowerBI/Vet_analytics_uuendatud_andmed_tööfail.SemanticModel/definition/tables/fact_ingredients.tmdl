@@ -1,0 +1,62 @@
+table fact_ingredients
+	lineageTag: d4736ad5-ab9d-4f03-aaae-0c2402c08d55
+
+	column product_id
+		dataType: string
+		lineageTag: 3104f153-dcc4-4572-ac49-8b3230067fdf
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ingredient
+		dataType: string
+		lineageTag: 4a67c904-b925-472e-8548-ec89718b0721
+		summarizeBy: none
+		sourceColumn: ingredient
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: 0297191e-7702-4f15-a5b8-60e285383099
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column protein
+		dataType: string
+		lineageTag: a912af9e-0a31-4392-adcf-844991c44c17
+		summarizeBy: none
+		sourceColumn: protein
+
+		annotation SummarizationSetBy = Automatic
+
+	column oil
+		dataType: string
+		lineageTag: 8a1b59d1-c2a3-4d4b-958f-d04b418d0ae5
+		summarizeBy: none
+		sourceColumn: oil
+
+		annotation SummarizationSetBy = Automatic
+
+	column carbs
+		dataType: string
+		lineageTag: 7f4cf81b-d4ce-4412-8ccd-4b57db974793
+		summarizeBy: none
+		sourceColumn: carbs
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_ingredients = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "postgres"),
+				    vet_powerbi_fact_ingredients = Source{[Schema="vet_powerbi",Item="fact_ingredients"]}[Data]
+				in
+				    vet_powerbi_fact_ingredients
+
+	annotation PBI_ResultType = Table
+

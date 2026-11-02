@@ -1,0 +1,55 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "9b3e81e12bcd417b506e",
+  "position": {
+    "x": 572,
+    "y": 240,
+    "z": 5000,
+    "height": 59,
+    "width": 653,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "When ",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "12pt",
+                      "color": "#333333"
+                    }
+                  },
+                  {
+                    "value": "no",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontStyle": "italic",
+                      "fontSize": "12pt",
+                      "color": "#333333"
+                    }
+                  },
+                  {
+                    "value": " nutrient is selected, calcium content is displayed. To compare another nutrient, select one nutrient from the list.",
+                    "textStyle": {
+                      "fontStyle": "italic",
+                      "fontSize": "12pt",
+                      "color": "#333333"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

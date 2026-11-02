@@ -1,0 +1,253 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "1d919e61ce7053f45fe8",
+  "position": {
+    "x": 10.249110320284696,
+    "y": 0,
+    "z": 0,
+    "height": 606.97508896797149,
+    "width": 840.42704626334512,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "VET-ÄPP",
+                    "textStyle": {
+                      "fontSize": "12pt",
+                      "color": "#252423"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Lemmikloomatoitude ülevaade",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Leia koostisetingimustele vastavaid tooteid ja võrdle nende toitainesisaldust.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Aruande eesmärk",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Aruanne võimaldab uurida lemmikloomatoitude andmestikku. Aluseks on Vet projekti käigus puhastatud ja ühtlustatud tooteandmed. Aruandes saab vaadata koostisosade rühmitust, välistada koostisosi, otsida nõutavaid koostisosi ja toitaineid ning võrrelda toodete toitainesisaldust.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Aruande lehed",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Välistamine. ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "12pt"
+                    }
+                  },
+                  {
+                    "value": "Vali koostisosa, mida soovid vältida. Tabel näitab valiku läbinud toodete koostisosi ning kaardid alles jäänud ja välistatud toodete arvu. Brändifilter kitsendab valikut kaubamärgi järgi.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Kategooriad ja koostisosad. ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "12pt"
+                    }
+                  },
+                  {
+                    "value": "Vaata toodete, erinevate koostisosanimede ja koostisosakategooriate arvu. Klõpsa diagrammi kategoorial, et näha sellesse kuuluvaid koostisosanimetusi.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Toitainete võrdlus. ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "12pt"
+                    }
+                  },
+                  {
+                    "value": "Vali võrreldavad tooted ja toitaine. Diagrammil võrreldakse üht toitainet korraga; toitainevalikuta kuvatakse kaltsiumisisaldus. Maatriksis saab vaadata mitut toitainet.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Sobivad toidud. ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "12pt"
+                    }
+                  },
+                  {
+                    "value": "Ühenda välistatavate ja nõutavate koostisosade ning nõutavate toitainete valikud. Tabel kuvab valitud tingimustele vastavad tooted.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Valikute ja tulemuste lugemine",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\"All\" tähendab, et vastav filter valikut ei piira. Uue otsingu alustamiseks tühjenda varasemad filtrivalikud. Sisaldused on esitatud mg/kg ehk milligrammides ühe kilogrammi toidu kohta. Tulemused põhinevad aruandes olevatel koostise- ja toitaineandmetel.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Andmetarkuse grupitöö · Gea, Oksana, Liina ja Astrit",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "12pt",
+                      "color": "#252423"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "PostgreSQL · Python · Power BI | Oktoober 2026",
+                    "textStyle": {
+                      "fontSize": "12pt",
+                      "color": "#252423"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

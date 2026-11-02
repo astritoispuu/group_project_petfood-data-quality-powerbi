@@ -1,0 +1,20 @@
+relationship ff94895f-c0be-4c07-b09d-a787b08c7013
+	fromColumn: fact_product_nutrients.nutrient_id
+	toColumn: dim_nutrients.nutrient_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship 9998b278-2c4b-49c7-abad-14926d4ddc88
+	fromColumn: fact_product_nutrients.product_id
+	toColumn: dim_products.product_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship 5f0b82d8-a626-7b3a-a712-693cc30c3743
+	fromColumn: fact_ingredients.ingredient
+	toColumn: dim_ingredients.ingredient
+
+relationship ed54af15-b279-e68b-c983-5c2c53a8e867
+	fromColumn: fact_ingredients.product_id
+	toColumn: dim_products.product_id
+

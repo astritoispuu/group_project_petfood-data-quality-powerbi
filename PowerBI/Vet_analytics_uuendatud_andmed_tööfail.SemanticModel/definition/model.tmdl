@@ -1,0 +1,26 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: et-EE
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["dim_ingredients","dim_nutrients","dim_products","fact_ingredients","fact_product_nutrients"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table dim_ingredients
+ref table dim_nutrients
+ref table dim_products
+ref table fact_ingredients
+ref table fact_product_nutrients
+ref table Filter_Ingredients
+ref table Include_Ingredients
+ref table Include_Nutrients
+
+ref cultureInfo en-US
+

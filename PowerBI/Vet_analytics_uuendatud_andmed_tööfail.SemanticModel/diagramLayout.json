@@ -1,0 +1,123 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 747.38305001469371,
+            "y": 619.625
+          },
+          "nodeIndex": "dim_ingredients",
+          "nodeLineageTag": "43a965f4-1e49-4fde-b94a-5b3670107e74",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 490.38305001469371,
+            "y": 474.625
+          },
+          "nodeIndex": "dim_nutrients",
+          "nodeLineageTag": "62263d6f-12cd-4e61-979c-bb58f4ed7f7d",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 10,
+            "y": 5.625
+          },
+          "nodeIndex": "dim_products",
+          "nodeLineageTag": "8a0a55dd-1183-4f5a-a527-058f3c926e0b",
+          "size": {
+            "height": 1000,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 648.38305001469371,
+            "y": 25.625
+          },
+          "nodeIndex": "fact_ingredients",
+          "nodeLineageTag": "d4736ad5-ab9d-4f03-aaae-0c2402c08d55",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 334.20156119318517,
+            "y": 37.484587180246521
+          },
+          "nodeIndex": "fact_product_nutrients",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 997.38305001469371,
+            "y": 284.625
+          },
+          "nodeIndex": "Filter_Ingredients",
+          "nodeLineageTag": "e821e271-b3c7-43f1-897d-fb5dfbc1cb57",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 1271.3830500146937,
+            "y": 403.125
+          },
+          "nodeIndex": "Include_Ingredients",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1545.3830500146937,
+            "y": 401.875
+          },
+          "nodeIndex": "Include_Nutrients",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

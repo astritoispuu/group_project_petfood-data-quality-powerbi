@@ -1,0 +1,39 @@
+table dim_nutrients
+	lineageTag: 62263d6f-12cd-4e61-979c-bb58f4ed7f7d
+
+	column nutrient_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 9342528b-5d01-4fde-9ad9-b562d851d534
+		summarizeBy: none
+		sourceColumn: nutrient_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column nutrient_name
+		dataType: string
+		lineageTag: eabdc1e6-bcac-4486-9aaf-129ec53683ed
+		summarizeBy: none
+		sourceColumn: nutrient_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit
+		dataType: string
+		lineageTag: c1161bea-cd28-4240-b65f-e4adcd0b2711
+		summarizeBy: none
+		sourceColumn: unit
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_nutrients = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "postgres"),
+				    vet_powerbi_dim_nutrients = Source{[Schema="vet_powerbi",Item="dim_nutrients"]}[Data]
+				in
+				    vet_powerbi_dim_nutrients
+
+	annotation PBI_ResultType = Table
+

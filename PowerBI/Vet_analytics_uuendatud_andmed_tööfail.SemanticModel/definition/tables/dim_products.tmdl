@@ -1,0 +1,1109 @@
+table dim_products
+	lineageTag: 8a0a55dd-1183-4f5a-a527-058f3c926e0b
+
+	measure Valiku_labinud_toodete_arv =
+			
+			COALESCE (
+			    COUNTROWS (
+			        FILTER (
+			            // Võtame iga toote ID ühe korra.
+			            VALUES ( 'dim_products'[product_id] ),
+			
+			            // Jätame tühja ID välja ja kontrollime iga toote filtrit.
+			            NOT ISBLANK ( 'dim_products'[product_id] )
+			                && CALCULATE ( [Toote_Koostisosa_Filter] ) = 1
+			        )
+			    ),
+			
+			    // Kui ükski toode valikut ei läbi, kuvame nulli.
+			    0
+			)
+		formatString: 0
+		lineageTag: b2455bb5-556b-48e6-8ecf-4fb22e1c6e97
+
+	measure Valistatud_toodete_arv =
+			
+			VAR TootedEnneValistamist =
+			    // Loendame erinevad toote ID-d; tühjad ID-d jätame välja.
+			    COALESCE (
+			        DISTINCTCOUNTNOBLANK ( 'dim_products'[product_id] ),
+			        0
+			    )
+			RETURN
+			    // Lahutame algarvust valiku läbinud toodete arvu.
+			    TootedEnneValistamist - [Valiku_labinud_toodete_arv]
+		formatString: 0
+		lineageTag: 9edb6ada-7f4a-4a5e-8a10-b058e06ed238
+
+	column product_id
+		dataType: string
+		lineageTag: 06cc2442-78a8-4ecb-bd33-a2c5ccad05a4
+		summarizeBy: none
+		sourceColumn: product_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name_fi
+		dataType: string
+		lineageTag: bb8a4e88-6ec6-4cc4-a1ad-0569d7e1b7e3
+		summarizeBy: none
+		sourceColumn: product_name_fi
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name_en
+		dataType: string
+		lineageTag: 2535b88f-bd3e-404f-a820-9c845da6c9c7
+		summarizeBy: none
+		sourceColumn: product_name_en
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_brand
+		dataType: string
+		lineageTag: fae62d1f-a9e5-4843-a492-bfe9f5d87216
+		summarizeBy: none
+		sourceColumn: product_brand
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column species[0]
+		dataType: string
+		lineageTag: 7679a94f-8cc7-4fbc-b3c0-e364a30bc644
+		summarizeBy: none
+		sourceColumn: species[0]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column species[1]
+		dataType: string
+		lineageTag: 68668e05-dd6c-4746-a00b-c5720c6d81c1
+		summarizeBy: none
+		sourceColumn: species[1]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_origin_info
+		dataType: string
+		isHidden
+		lineageTag: 1dec54ae-d365-433e-9616-7de825271dcc
+		summarizeBy: none
+		sourceColumn: product_origin_info
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_oils[0]
+		dataType: string
+		isHidden
+		lineageTag: d87a3401-afb7-4293-9be3-730263abe1cc
+		summarizeBy: none
+		sourceColumn: found_oils[0]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_oils[1]
+		dataType: string
+		isHidden
+		lineageTag: 5bd917ea-2dec-4c27-81f3-d1987add314a
+		summarizeBy: none
+		sourceColumn: found_oils[1]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_oils[2]
+		dataType: string
+		isHidden
+		lineageTag: 356d67fd-88cf-484f-9484-36d00b14d15c
+		summarizeBy: none
+		sourceColumn: found_oils[2]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_oils[3]
+		dataType: string
+		isHidden
+		lineageTag: b028bc27-b419-4aaf-9e33-71d8fdad23dd
+		summarizeBy: none
+		sourceColumn: found_oils[3]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_oils[4]
+		dataType: string
+		isHidden
+		lineageTag: e2c91d3d-f577-4502-b899-f0e32430c0de
+		summarizeBy: none
+		sourceColumn: found_oils[4]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_oils[5]
+		dataType: string
+		isHidden
+		lineageTag: 27b35f42-5a1e-4152-8ffd-d1ca5a76ff1d
+		summarizeBy: none
+		sourceColumn: found_oils[5]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_proteins[0]
+		dataType: string
+		isHidden
+		lineageTag: 3ac75635-86b2-49f5-9f85-571e237b40d9
+		summarizeBy: none
+		sourceColumn: found_proteins[0]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_proteins[1]
+		dataType: string
+		isHidden
+		lineageTag: cc8dbaf1-0004-4772-802f-03605fe38774
+		summarizeBy: none
+		sourceColumn: found_proteins[1]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_proteins[2]
+		dataType: string
+		isHidden
+		lineageTag: ea38c97a-50aa-4a42-8a28-6896c4221765
+		summarizeBy: none
+		sourceColumn: found_proteins[2]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_proteins[3]
+		dataType: string
+		isHidden
+		lineageTag: 16f354f1-9715-43a1-bb35-00fdf8393f51
+		summarizeBy: none
+		sourceColumn: found_proteins[3]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_proteins[4]
+		dataType: string
+		isHidden
+		lineageTag: 39f15233-1716-4053-a71f-7a47fe88005a
+		summarizeBy: none
+		sourceColumn: found_proteins[4]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_proteins[5]
+		dataType: string
+		isHidden
+		lineageTag: 37f05a2b-8c99-404b-95d7-44b8b15311f6
+		summarizeBy: none
+		sourceColumn: found_proteins[5]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_proteins[6]
+		dataType: string
+		isHidden
+		lineageTag: 11d67db9-2743-41a8-bf10-cdccfa3646f5
+		summarizeBy: none
+		sourceColumn: found_proteins[6]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_proteins[7]
+		dataType: string
+		isHidden
+		lineageTag: 2c15ddb6-fb06-452a-a482-50bf42608c4a
+		summarizeBy: none
+		sourceColumn: found_proteins[7]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_proteins[8]
+		dataType: string
+		isHidden
+		lineageTag: 1f4ade06-1bd3-40fd-b44a-2d656d4b4bb7
+		summarizeBy: none
+		sourceColumn: found_proteins[8]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_proteins[9]
+		dataType: string
+		isHidden
+		lineageTag: 420a62da-e005-40bf-a332-75c1d8012c4e
+		summarizeBy: none
+		sourceColumn: found_proteins[9]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_proteins[10]
+		dataType: string
+		isHidden
+		lineageTag: 37270ee1-dcb7-427b-acb2-c650bc457add
+		summarizeBy: none
+		sourceColumn: found_proteins[10]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_proteins[11]
+		dataType: string
+		isHidden
+		lineageTag: 4fe82118-858b-46b8-ad1b-adb441dce727
+		summarizeBy: none
+		sourceColumn: found_proteins[11]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_proteins[12]
+		dataType: string
+		isHidden
+		lineageTag: 8095e082-6bf3-454b-b034-4e3a8004ef00
+		summarizeBy: none
+		sourceColumn: found_proteins[12]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_proteins[13]
+		dataType: string
+		isHidden
+		lineageTag: ff3f1c34-76a8-4d42-b248-632dad00f6ea
+		summarizeBy: none
+		sourceColumn: found_proteins[13]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_proteins[14]
+		dataType: string
+		isHidden
+		lineageTag: 56445f4c-e08f-49f5-b27d-960c20ab2b81
+		summarizeBy: none
+		sourceColumn: found_proteins[14]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_proteins[15]
+		dataType: string
+		isHidden
+		lineageTag: a2f31dc7-2f8d-4182-bd91-d85cc300a39b
+		summarizeBy: none
+		sourceColumn: found_proteins[15]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_proteins[16]
+		dataType: string
+		isHidden
+		lineageTag: 474a4847-5762-4331-b142-5d02330a5212
+		summarizeBy: none
+		sourceColumn: found_proteins[16]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_proteins[17]
+		dataType: string
+		isHidden
+		lineageTag: dbf8fa30-3369-4433-ba8a-74f714d0ef39
+		summarizeBy: none
+		sourceColumn: found_proteins[17]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_proteins[18]
+		dataType: string
+		isHidden
+		lineageTag: 3d048633-3960-4aa3-8b8a-6d2d98d5b6f1
+		summarizeBy: none
+		sourceColumn: found_proteins[18]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_proteins[19]
+		dataType: string
+		isHidden
+		lineageTag: e4d028f3-cd24-43cb-9057-a1c67cd65205
+		summarizeBy: none
+		sourceColumn: found_proteins[19]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_proteins[20]
+		dataType: string
+		isHidden
+		lineageTag: ea9b8a50-51d1-4b06-ac86-be229426ec11
+		summarizeBy: none
+		sourceColumn: found_proteins[20]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_proteins[21]
+		dataType: string
+		isHidden
+		lineageTag: 1ced1eab-6208-4716-805c-1d8624e6d9b0
+		summarizeBy: none
+		sourceColumn: found_proteins[21]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_proteins[22]
+		dataType: string
+		isHidden
+		lineageTag: d47b9cb9-ab61-48ba-8012-0f31547079ae
+		summarizeBy: none
+		sourceColumn: found_proteins[22]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[0]
+		dataType: string
+		isHidden
+		lineageTag: 0d86aa4e-0382-4cc7-995f-ce6aca1003de
+		summarizeBy: none
+		sourceColumn: found_carbs[0]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[1]
+		dataType: string
+		isHidden
+		lineageTag: b6968cd5-fedb-41f8-9695-9f156be039ec
+		summarizeBy: none
+		sourceColumn: found_carbs[1]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[2]
+		dataType: string
+		isHidden
+		lineageTag: f912de2c-2693-4124-b4c0-6ece57915574
+		summarizeBy: none
+		sourceColumn: found_carbs[2]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[3]
+		dataType: string
+		isHidden
+		lineageTag: 6ff547dc-d574-468a-98ad-47792fda4a94
+		summarizeBy: none
+		sourceColumn: found_carbs[3]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[4]
+		dataType: string
+		isHidden
+		lineageTag: 36aa246b-4b09-402e-9494-48925c1f5deb
+		summarizeBy: none
+		sourceColumn: found_carbs[4]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[5]
+		dataType: string
+		isHidden
+		lineageTag: 275a1713-1cfd-420c-8252-2d9ee98d197e
+		summarizeBy: none
+		sourceColumn: found_carbs[5]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[6]
+		dataType: string
+		isHidden
+		lineageTag: f716c9bd-3bc7-4098-bf34-7420c1444497
+		summarizeBy: none
+		sourceColumn: found_carbs[6]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[7]
+		dataType: string
+		isHidden
+		lineageTag: 53abdda9-b0d5-404c-b6b4-ebb54ea63f0b
+		summarizeBy: none
+		sourceColumn: found_carbs[7]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[8]
+		dataType: string
+		isHidden
+		lineageTag: 32c89736-4e64-483a-9eeb-d8b9e5fe02c6
+		summarizeBy: none
+		sourceColumn: found_carbs[8]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[9]
+		dataType: string
+		isHidden
+		lineageTag: 837986af-4eb6-46b7-96ab-3cd1d61ed69b
+		summarizeBy: none
+		sourceColumn: found_carbs[9]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[10]
+		dataType: string
+		isHidden
+		lineageTag: 2692254a-d487-4d55-abda-aa6837c346b0
+		summarizeBy: none
+		sourceColumn: found_carbs[10]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[11]
+		dataType: string
+		isHidden
+		lineageTag: 552f4b51-3cd0-4de1-8825-8aa2beec04a9
+		summarizeBy: none
+		sourceColumn: found_carbs[11]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[12]
+		dataType: string
+		isHidden
+		lineageTag: 14e8d3f2-8c03-4f51-87d1-200ecf3a05b6
+		summarizeBy: none
+		sourceColumn: found_carbs[12]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[13]
+		dataType: string
+		isHidden
+		lineageTag: 1e438fff-616c-43c4-a7ba-7add29127f41
+		summarizeBy: none
+		sourceColumn: found_carbs[13]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[14]
+		dataType: string
+		isHidden
+		lineageTag: f3a74e17-c65a-41a7-baf3-1492b6ba966f
+		summarizeBy: none
+		sourceColumn: found_carbs[14]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[15]
+		dataType: string
+		isHidden
+		lineageTag: be19919d-dc91-4c45-bbfc-9c2f8a27f920
+		summarizeBy: none
+		sourceColumn: found_carbs[15]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[16]
+		dataType: string
+		isHidden
+		lineageTag: 8d686ec9-d424-4652-a765-4f2786b416cf
+		summarizeBy: none
+		sourceColumn: found_carbs[16]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[17]
+		dataType: string
+		isHidden
+		lineageTag: 0bd9a830-f4b6-402d-bed9-3dd21d92935c
+		summarizeBy: none
+		sourceColumn: found_carbs[17]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[18]
+		dataType: string
+		isHidden
+		lineageTag: b1cf3de5-b2a5-4583-862b-347a983e38ba
+		summarizeBy: none
+		sourceColumn: found_carbs[18]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[19]
+		dataType: string
+		isHidden
+		lineageTag: c4471497-3ff5-4643-82f0-8a28a76af8e8
+		summarizeBy: none
+		sourceColumn: found_carbs[19]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[20]
+		dataType: string
+		isHidden
+		lineageTag: fbc756da-9441-4df1-a49a-4619992f74ab
+		summarizeBy: none
+		sourceColumn: found_carbs[20]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[21]
+		dataType: string
+		isHidden
+		lineageTag: 5de3cd6e-3570-4c56-b0a7-3f2b59e1c3a0
+		summarizeBy: none
+		sourceColumn: found_carbs[21]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[22]
+		dataType: string
+		isHidden
+		lineageTag: f0ca3e6c-79a9-47a7-a88c-c831545a9a33
+		summarizeBy: none
+		sourceColumn: found_carbs[22]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[23]
+		dataType: string
+		isHidden
+		lineageTag: b529a8d0-3914-492b-924f-122ed3e192c4
+		summarizeBy: none
+		sourceColumn: found_carbs[23]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[24]
+		dataType: string
+		isHidden
+		lineageTag: 5193f466-5646-41a5-a1d3-b780d6d4a05f
+		summarizeBy: none
+		sourceColumn: found_carbs[24]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[25]
+		dataType: string
+		isHidden
+		lineageTag: 87483583-8b4b-4a2f-a316-f154a7f45d30
+		summarizeBy: none
+		sourceColumn: found_carbs[25]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[26]
+		dataType: string
+		isHidden
+		lineageTag: be5ac951-3582-4441-b1b2-a025da64f756
+		summarizeBy: none
+		sourceColumn: found_carbs[26]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[27]
+		dataType: string
+		isHidden
+		lineageTag: d3aef4ec-b42a-43b7-a44e-8d896ddee2b5
+		summarizeBy: none
+		sourceColumn: found_carbs[27]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[28]
+		dataType: string
+		isHidden
+		lineageTag: 5346e47b-7d79-4411-9d77-85157069dde1
+		summarizeBy: none
+		sourceColumn: found_carbs[28]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[29]
+		dataType: string
+		isHidden
+		lineageTag: 22ec9d77-2912-4cb7-a1b6-80400a9c75a0
+		summarizeBy: none
+		sourceColumn: found_carbs[29]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[30]
+		dataType: string
+		isHidden
+		lineageTag: 42501b06-6e53-4d66-8e1c-aa6ecb8c673c
+		summarizeBy: none
+		sourceColumn: found_carbs[30]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[31]
+		dataType: string
+		isHidden
+		lineageTag: 319fc431-4281-4b7f-be81-da3d60ed40bd
+		summarizeBy: none
+		sourceColumn: found_carbs[31]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column found_carbs[32]
+		dataType: string
+		isHidden
+		lineageTag: eee44bef-797f-44fd-b6f1-b3ee44e8a545
+		summarizeBy: none
+		sourceColumn: found_carbs[32]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_category
+		dataType: string
+		lineageTag: b1fe141e-1018-4c7c-bae8-67d23c056450
+		summarizeBy: none
+		sourceColumn: product_category
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_type
+		dataType: string
+		isHidden
+		lineageTag: 39e48f9b-0e90-48b6-9b08-a2400142640b
+		summarizeBy: none
+		sourceColumn: product_type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_content
+		dataType: string
+		isHidden
+		lineageTag: a2022116-cd20-4f34-a7c7-270478d56a64
+		summarizeBy: none
+		sourceColumn: product_content
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_protein_source
+		dataType: string
+		isHidden
+		lineageTag: f12343aa-db45-48ff-8385-eb9fdb6dbfa7
+		summarizeBy: none
+		sourceColumn: product_protein_source
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'species Koira 1 Kissa 2'
+		dataType: string
+		lineageTag: aedaf6dd-3813-4007-af77-c1775511a810
+		summarizeBy: none
+		sourceColumn: species Koira 1 Kissa 2
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tuotekategoria: 0. Täysravinto, 1. herkut, puruluut jne., 2. T'
+		dataType: string
+		isHidden
+		lineageTag: 595322ed-22c8-4390-b482-a8ad17113752
+		summarizeBy: none
+		sourceColumn: Tuotekategoria: 0. Täysravinto, 1. herkut, puruluut jne., 2. T
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column '0.. kuivaruoka, 1. Puolikostea, 2. Märkäruoka, 3. Lisäravinn'
+		dataType: string
+		isHidden
+		lineageTag: 35f0346f-902f-49b5-874c-25f62e556188
+		summarizeBy: none
+		sourceColumn: 0.. kuivaruoka, 1. Puolikostea, 2. Märkäruoka, 3. Lisäravinn
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column editedDate
+		dataType: string
+		isHidden
+		lineageTag: 8afd5d9d-481a-4a41-baa8-5846975f70c5
+		summarizeBy: none
+		sourceColumn: editedDate
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_veteva_id
+		dataType: string
+		isHidden
+		lineageTag: 48a654aa-387f-4b8e-be75-e845c041a806
+		summarizeBy: none
+		sourceColumn: product_veteva_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column sku
+		dataType: string
+		isHidden
+		lineageTag: fdf5a6e4-c8bc-48bd-9009-29aca2cff1bf
+		summarizeBy: none
+		sourceColumn: sku
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_origin_info_1
+		dataType: string
+		isHidden
+		lineageTag: 9086c005-64ff-45a0-82ca-bf6cac39c2f6
+		summarizeBy: none
+		sourceColumn: product_origin_info_1
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_carbohydrates_source
+		dataType: string
+		isHidden
+		lineageTag: 91be9302-0f48-404f-892a-9ac635ea7613
+		summarizeBy: none
+		sourceColumn: product_carbohydrates_source
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_oils_fats_source
+		dataType: string
+		isHidden
+		lineageTag: 5e79c174-23ce-4db1-8d5b-0ec9c727870c
+		summarizeBy: none
+		sourceColumn: product_oils_fats_source
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ME (kcal)'
+		dataType: string
+		isHidden
+		lineageTag: ac480438-6a99-4563-a26a-8e32b8a2a1a4
+		summarizeBy: none
+		sourceColumn: ME (kcal)
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_others_source
+		dataType: string
+		isHidden
+		lineageTag: cc818c0a-1e74-4e7e-b9f2-92c8600f16f6
+		summarizeBy: none
+		sourceColumn: product_others_source
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_retailer
+		dataType: string
+		isHidden
+		lineageTag: 667181da-5195-4485-a38d-7bdf0f7a21d4
+		summarizeBy: none
+		sourceColumn: product_retailer
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_additives
+		dataType: string
+		isHidden
+		lineageTag: c559e6e3-1859-4b4e-94f8-a50f8903b230
+		summarizeBy: none
+		sourceColumn: product_additives
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name_sv
+		dataType: string
+		lineageTag: a7524027-c18f-48ed-a254-9990f3b9c31f
+		summarizeBy: none
+		sourceColumn: product_name_sv
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_testing_excel_import
+		dataType: string
+		isHidden
+		lineageTag: 4ef57718-f916-4cd6-b7ca-39b537a80a77
+		summarizeBy: none
+		sourceColumn: is_testing_excel_import
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column createdByClinicID
+		dataType: string
+		isHidden
+		lineageTag: 7fd42dc8-7e3d-45b4-9872-ef786914f09c
+		summarizeBy: none
+		sourceColumn: createdByClinicID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column createdDate
+		dataType: string
+		isHidden
+		lineageTag: 9a938df2-cd90-4524-aba5-5670d1542861
+		summarizeBy: none
+		sourceColumn: createdDate
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column visibility
+		dataType: string
+		isHidden
+		lineageTag: 67342e79-dd48-45c8-82f2-7ad188246d56
+		summarizeBy: none
+		sourceColumn: visibility
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'approval.status'
+		dataType: string
+		isHidden
+		lineageTag: 6482451a-d2e6-4a6b-b2cc-488f118abb47
+		summarizeBy: none
+		sourceColumn: approval.status
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'approval.approvedByClinicID'
+		dataType: string
+		isHidden
+		lineageTag: c0f3241d-6141-43ba-845e-20df34353c61
+		summarizeBy: none
+		sourceColumn: approval.approvedByClinicID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'approval.approvedAt'
+		dataType: string
+		isHidden
+		lineageTag: 83c30905-f653-4bee-b712-d0c140d11535
+		summarizeBy: none
+		sourceColumn: approval.approvedAt
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_protein_source[0]
+		dataType: string
+		isHidden
+		lineageTag: 4b939196-5724-40da-ae1c-2252c015051d
+		summarizeBy: none
+		sourceColumn: product_protein_source[0]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_protein_source[1]
+		dataType: string
+		isHidden
+		lineageTag: 3b141f2e-af9b-44f3-a7a5-ea6f73b7af47
+		summarizeBy: none
+		sourceColumn: product_protein_source[1]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_oils_fats_source[0]
+		dataType: string
+		isHidden
+		lineageTag: 730dde7a-8908-46d8-b50c-2e22c1cd712b
+		summarizeBy: none
+		sourceColumn: product_oils_fats_source[0]
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_products = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "postgres"),
+				    vet_powerbi_dim_products = Source{[Schema="vet_powerbi",Item="dim_products"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(vet_powerbi_dim_products,{"product_name"})
+				in
+				    #"Removed Columns"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Exception
+

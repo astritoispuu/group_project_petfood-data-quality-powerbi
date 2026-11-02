@@ -1,0 +1,38 @@
+table dim_ingredients
+	lineageTag: 43a965f4-1e49-4fde-b94a-5b3670107e74
+
+	measure Koostisosade_arv = ```
+			
+			    // Loendab erinevad koostisosanimed, jättes BLANK-väärtuse välja.
+			    DISTINCTCOUNTNOBLANK ( 'dim_ingredients'[ingredient] )
+			```
+		formatString: 0
+		lineageTag: a617f158-4860-4c01-b05a-de319337a6e4
+
+	column ingredient
+		dataType: string
+		lineageTag: ad3ed08a-cf4f-443a-ac2e-5050397574f9
+		summarizeBy: none
+		sourceColumn: ingredient
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: daab3400-7c72-4ffc-b8e0-c9882420f682
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_ingredients = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "postgres"),
+				    vet_powerbi_dim_ingredients = Source{[Schema="vet_powerbi",Item="dim_ingredients"]}[Data]
+				in
+				    vet_powerbi_dim_ingredients
+
+	annotation PBI_ResultType = Table
+

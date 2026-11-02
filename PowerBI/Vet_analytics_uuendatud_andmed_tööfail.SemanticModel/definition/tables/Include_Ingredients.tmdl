@@ -1,0 +1,71 @@
+table Include_Ingredients
+	lineageTag: b14ef843-4060-4f75-bfe1-c63d0ac6c78e
+
+	measure Toote_Noutud_Koostisosad_Filter =
+			
+			VAR ValitudKoostisosad =
+			    VALUES ( 'Include_Ingredients'[Ingredient] )
+			
+			VAR FilterOn =
+			    ISFILTERED ( 'Include_Ingredients'[Ingredient] )
+			
+			VAR TooteIDd =
+			    VALUES ( 'dim_products'[product_id] )
+			
+			VAR LeitudKoostisosad =
+			    DISTINCT (
+			        SELECTCOLUMNS (
+			            FILTER (
+			                ALL ( 'fact_ingredients' ),
+			                // Kontrollime parajasti tabelireal olevat toodet.
+			                'fact_ingredients'[product_id] IN TooteIDd
+			                    && 'fact_ingredients'[ingredient]
+			                        IN ValitudKoostisosad
+			            ),
+			            "Koostisosa", 'fact_ingredients'[ingredient]
+			        )
+			    )
+			
+			RETURN
+			    IF (
+			        // Valikuta ei piira see filter toodete nimekirja.
+			        NOT FilterOn,
+			        1,
+			        // Toode peab sisaldama kõiki valitud koostisosi.
+			        IF (
+			            COUNTROWS ( LeitudKoostisosad )
+			                = COUNTROWS ( ValitudKoostisosad ),
+			            1,
+			            0
+			        )
+			    )
+		formatString: 0
+		lineageTag: 0e9fd229-1317-4c6b-8633-b3f2977a6416
+
+	column Ingredient
+		lineageTag: 57980ff2-ff10-4509-8b90-05dd2b0d2c7c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Ingredient]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Include_Ingredients = calculated
+		mode: import
+		source =
+				
+				FILTER (
+				    // Kopeerime koostisosade nimekirja eraldi valiku jaoks.
+				    DISTINCT (
+				        SELECTCOLUMNS (
+				            'dim_ingredients',
+				            "Ingredient", 'dim_ingredients'[ingredient]
+				        )
+				    ),
+				    // Jätame tühjad nimetused välja.
+				    NOT ISBLANK ( [Ingredient] )
+				        && [Ingredient] <> ""
+				)
+
+	annotation PBI_Id = 60be50b3eae3441192f3439fa255b6eb
+

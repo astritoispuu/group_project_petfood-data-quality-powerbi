@@ -1,0 +1,107 @@
+table fact_product_nutrients
+	lineageTag: 421d3add-4e07-4846-af48-c14979c9352d
+
+	measure Toitaine_sisaldus_mg_kg =
+			
+			IF (
+			    // Kuvame sisalduse ühe toote ja ühe toitaine kohta.
+			    HASONEVALUE ( 'dim_products'[product_id] )
+			        && HASONEVALUE ( 'dim_nutrients'[nutrient_id] ),
+			
+			    // Tagastame selle kombinatsiooni ühe eristatava sisalduse.
+			    SELECTEDVALUE ( 'fact_product_nutrients'[value_mg_kg] ),
+			
+			    // Mitme toote või toitaine koondtulemuse jätame tühjaks.
+			    BLANK ()
+			)
+		lineageTag: f2f451a0-966a-4bf0-98ef-604b3c6e3ac0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Toitaine_sisaldus_diagrammil =
+			
+			IF (
+			    // Valiku korral kuvame valitud toitaine sisalduse.
+			    ISFILTERED ( 'dim_nutrients'[nutrient_name] ),
+			    [Toitaine_sisaldus_mg_kg],
+			
+			    // Valikuta kuvame kaltsiumisisalduse.
+			    CALCULATE (
+			        [Toitaine_sisaldus_mg_kg],
+			        'dim_nutrients'[nutrient_name] = "calsium_mg_kg"
+			    )
+			)
+		lineageTag: 92a7bff9-37fd-4b76-a049-138493d8eff9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Toitaine_diagrammi_pealkiri =
+			
+			VAR Valitud =
+			    SELECTEDVALUE ( 'dim_nutrients'[nutrient_name] )
+			
+			VAR Nimetus =
+			    IF (
+			        Valitud = "calsium_mg_kg",
+			        "Kaltsium",
+			        SUBSTITUTE (
+			            SUBSTITUTE ( Valitud, "_mg_kg", "" ),
+			            "_", " "
+			        )
+			    )
+			
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			
+			        // Toitainevalikuta kasutab diagramm kaltsiumi.
+			        NOT ISFILTERED ( 'dim_nutrients'[nutrient_name] ),
+			            "Kaltsiumisisaldus (mg/kg) — vaikimisi",
+			
+			        // Ühe valitud toitaine korral näitame selle nime.
+			        HASONEVALUE ( 'dim_nutrients'[nutrient_name] ),
+			            Nimetus & " sisaldus (mg/kg)",
+			
+			        // Mitme toitaine korral palume valikut täpsustada.
+			        "Vali diagrammi jaoks üks toitaine"
+			    )
+		lineageTag: ce4c37c9-59cb-49d3-bb9b-c3e34f9b60cc
+
+	column product_id
+		dataType: string
+		lineageTag: 625ecf81-ece9-44de-a061-1a05ed986d0f
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column nutrient_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 41343ce4-bb40-47e1-8b44-c72bf939d9b1
+		summarizeBy: none
+		sourceColumn: nutrient_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_mg_kg
+		dataType: double
+		lineageTag: 65e3c441-ac47-4443-84eb-9f74dc21aaa5
+		summarizeBy: sum
+		sourceColumn: value_mg_kg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_product_nutrients = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "postgres"),
+				    vet_powerbi_fact_product_nutrients = Source{[Schema="vet_powerbi",Item="fact_product_nutrients"]}[Data]
+				in
+				    vet_powerbi_fact_product_nutrients
+
+	annotation PBI_ResultType = Table
+
