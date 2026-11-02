@@ -5,8 +5,8 @@
     "x": 10.249110320284696,
     "y": 0,
     "z": 0,
-    "height": 606.97508896797149,
-    "width": 840.42704626334512,
+    "height": 606.9750889679715,
+    "width": 840.4270462633451,
     "tabOrder": 0
   },
   "visual": {
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "VET-ÄPP",
+                    "value": "VET APP",
                     "textStyle": {
                       "fontSize": "12pt",
                       "color": "#252423"
@@ -37,7 +37,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Lemmikloomatoitude ülevaade",
+                    "value": "Pet Food Overview",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontSize": "12pt"
@@ -48,7 +48,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Leia koostisetingimustele vastavaid tooteid ja võrdle nende toitainesisaldust.",
+                    "value": "Find products that match your ingredient requirements and compare their nutrient content.",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
@@ -65,7 +65,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Aruande eesmärk",
+                    "value": "Purpose of the report",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontSize": "12pt"
@@ -76,7 +76,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Aruanne võimaldab uurida lemmikloomatoitude andmestikku. Aluseks on Vet projekti käigus puhastatud ja ühtlustatud tooteandmed. Aruandes saab vaadata koostisosade rühmitust, välistada koostisosi, otsida nõutavaid koostisosi ja toitaineid ning võrrelda toodete toitainesisaldust.",
+                    "value": "This report lets you explore a pet food dataset. It is based on product data cleaned and standardised during the Vet project. You can view ingredient groupings, exclude ingredients, search for required ingredients and nutrients, and compare the nutrient content of products.",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
@@ -93,7 +93,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Aruande lehed",
+                    "value": "Report pages",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontSize": "12pt"
@@ -104,14 +104,14 @@
               {
                 "textRuns": [
                   {
-                    "value": "Välistamine. ",
+                    "value": "Exclusion. ",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontSize": "12pt"
                     }
                   },
                   {
-                    "value": "Vali koostisosa, mida soovid vältida. Tabel näitab valiku läbinud toodete koostisosi ning kaardid alles jäänud ja välistatud toodete arvu. Brändifilter kitsendab valikut kaubamärgi järgi.",
+                    "value": "Select the ingredient category you want to avoid. The table shows the categories of the products that passed the selection, and the cards show the number of remaining and excluded products. The brand filter narrows the selection by brand.",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
@@ -121,14 +121,14 @@
               {
                 "textRuns": [
                   {
-                    "value": "Kategooriad ja koostisosad. ",
+                    "value": "Ingredients & Categories. ",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontSize": "12pt"
                     }
                   },
                   {
-                    "value": "Vaata toodete, erinevate koostisosanimede ja koostisosakategooriate arvu. Klõpsa diagrammi kategoorial, et näha sellesse kuuluvaid koostisosanimetusi.",
+                    "value": "View the number of products, distinct ingredient names and ingredient categories. Click a category in the chart to see the ingredient names that belong to it.",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
@@ -138,14 +138,14 @@
               {
                 "textRuns": [
                   {
-                    "value": "Toitainete võrdlus. ",
+                    "value": "Nutrients Comparison. ",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontSize": "12pt"
                     }
                   },
                   {
-                    "value": "Vali võrreldavad tooted ja toitaine. Diagrammil võrreldakse üht toitainet korraga; toitainevalikuta kuvatakse kaltsiumisisaldus. Maatriksis saab vaadata mitut toitainet.",
+                    "value": "Select the products to compare and a nutrient. The chart compares one nutrient at a time; if no nutrient is selected, calcium content is shown. The matrix lets you view several nutrients.",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
@@ -155,14 +155,14 @@
               {
                 "textRuns": [
                   {
-                    "value": "Sobivad toidud. ",
+                    "value": "Suitable Foods. ",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontSize": "12pt"
                     }
                   },
                   {
-                    "value": "Ühenda välistatavate ja nõutavate koostisosade ning nõutavate toitainete valikud. Tabel kuvab valitud tingimustele vastavad tooted.",
+                    "value": "Combine selections of excluded and required ingredients and required nutrients. The table shows the products that match the selected conditions.",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
@@ -179,7 +179,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Valikute ja tulemuste lugemine",
+                    "value": "Reading selections and results",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontSize": "12pt"
@@ -190,7 +190,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "\"All\" tähendab, et vastav filter valikut ei piira. Uue otsingu alustamiseks tühjenda varasemad filtrivalikud. Sisaldused on esitatud mg/kg ehk milligrammides ühe kilogrammi toidu kohta. Tulemused põhinevad aruandes olevatel koostise- ja toitaineandmetel.",
+                    "value": "\"All\" means the filter does not restrict the selection. To start a new search, clear previous filter selections. Contents are given in mg/kg, i.e. milligrams per kilogram of food. Results are based on the ingredient and nutrient data in the report.",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
@@ -216,7 +216,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Andmetarkuse grupitöö · Gea, Oksana, Liina ja Astrit",
+                    "value": "Data Analytics group project · Gea, Oksana, Liina and Astrit",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontSize": "12pt",
@@ -235,7 +235,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "PostgreSQL · Python · Power BI | Oktoober 2026",
+                    "value": "PostgreSQL · Python · Power BI | October 2026",
                     "textStyle": {
                       "fontSize": "12pt",
                       "color": "#252423"
