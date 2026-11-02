@@ -6,7 +6,7 @@
 
 **Grupiliikmed:** Oksana Kulik, Liina Saarm, Gea Varang, Astrit Õispuu
 
-![Projekt numbrites](stats.svg)
+![Projekt numbrites](Readme/stats.svg)
 
 ---
 
@@ -34,11 +34,11 @@
 ### 1.2. Uurimisküsimused
 
 
-![Uurimisküsimused](tbl-research-questions.svg)
+![Uurimisküsimused](Readme/tbl-research-questions.svg)
 
 ### 1.3. Ärimõisted
 
-![Ärimõisted](tbl-business-terms.svg)
+![Ärimõisted](Readme/tbl-business-terms.svg)
 
 ---
 
@@ -51,20 +51,20 @@
 
 ### 2.2. Andmevoo arhitektuur
 
-![Andmevoo arhitektuur](pipeline.svg)
+![Andmevoo arhitektuur](Readme/pipeline.svg)
 
 ### 2.3. SQL andmemudel (tähtskeem)
 
 Andmed on struktureeritud relatsioonilisse andmebaasi, mis tagab andmete puhtuse, selge auditeeritavuse ja valmisoleku Power BI aruandluseks.
 
-![SQL andmemudeli tabelid](tbl-sql-tables.svg)
+![SQL andmemudeli tabelid](Readme/tbl-sql-tables.svg)
 
 
 ### 2.4. Tabelite vahelised seosed (Relationships)
 
-![Power BI tähtskeem](star-schema.svg)
+![Power BI tähtskeem](Readme/star-schema.svg)
 
-![Tabelite vahelised seosed](tbl-relationships.svg)
+![Tabelite vahelised seosed](Readme/tbl-relationships.svg)
 
 ### 2.5. Filtrite liikumise loogika (Cross-filter direction)
 
@@ -86,7 +86,7 @@ Algse CSV analüüsil tuvastati mitmeid struktuurseid, vormingulisi ja sisulisi 
 
 #### 3.2.1. Esialgsed struktuursed ja vormingulised parandused
 
-![Esialgsed struktuursed ja vormingulised parandused](tbl-structural-fixes.svg)
+![Esialgsed struktuursed ja vormingulised parandused](Readme/tbl-structural-fixes.svg)
 
 #### 3.2.2. Andmete dünaamiline unpivoteerimine ja tüübikontroll
 
@@ -101,9 +101,9 @@ Enne arvutuste tegemist kontrollitakse regulaaravaldise abil, kas tekstiline vä
 
 Andmete puhtuse ja usaldusväärsuse tagamiseks arvutatakse igale toitainele esimese (`Q1`, 25%) ja kolmanda (`Q3`, 75%) kvartiili põhjal statistilised piirid. Süsteem märgistab iga kirje automaatselt spetsiaalse staatusmärgiga (flag).
 
-![IQR-põhine anomaaliate tuvastamine](iqr-flags.svg)
+![IQR-põhine anomaaliate tuvastamine](Readme/iqr-flags.svg)
 
-![Kvaliteedisildid](tbl-quality-flags.svg)
+![Kvaliteedisildid](Readme/tbl-quality-flags.svg)
 
 ### 3.4. Andmete kontroll ja valideerimine andmebaasis
 
@@ -145,12 +145,12 @@ Normaliseeritud veerus esinev `NULL` ei tähenda automaatselt, et andmed on kadu
 
 Aruanne on jaotatud viieks loogiliseks vaheleheks, millest igaüks vastab konkreetsele kasutaja küsimusele:
 
-![Power BI aruande lehed](tbl-report-pages.svg)
+![Power BI aruande lehed](Readme/tbl-report-pages.svg)
 
 
 ## 5. Kokkuvõte ja arutelu
 
-![Uurimisküsimuste vastused](tbl-summary.svg)
+![Uurimisküsimuste vastused](Readme/tbl-summary.svg)
 
 - **Praktiline kasutus:** süsteem annab veterinaaridele ja rakenduste loojatele kindla aluse loomade toitumise ja eridieetide planeerimiseks.
 - **Piirangud:** analüüs toetub esitatud tootjaandmetele ja avalikele allikatele; andmetes esinevate puuduvate väärtuste korral ei asendata neid eelduslike arvudega (**puuduv ≠ 0**).
