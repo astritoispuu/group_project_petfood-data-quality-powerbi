@@ -2,8 +2,6 @@
 
 ### Lemmikloomatoidu koostisosade ja toitainete andmete analüüs ja normaliseerimine
 
-**GitHubi aadress ja esitatav versioon:** [github.com/OksanaLab/Vet_Kliinik](https://github.com/OksanaLab/Vet_Kliinik)
-
 **Grupiliikmed:** Oksana Kulik, Liina Saarm, Gea Varang, Astrit Õispuu
 
 ![Projekt numbrites](Readme/stats.svg)
